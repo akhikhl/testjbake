@@ -2,7 +2,7 @@
 <html lang="en">
   <head>
     <meta charset="utf-8"/>
-    <title>JBake</title>
+    <title>Security realms</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="">
     <meta name="author" content="">
@@ -59,12 +59,73 @@
     <div class="container">
 	
 	<div class="page-header">
-		<h1>Blog Archive</h1>
+		<h1>Security realms</h1>
 	</div>
-	
-	<!--<ul>-->
-	</ul>
-	
+
+	<p><div id="preamble">
+<div class="sectionbody">
+<div class="paragraph">
+<p>Gretty configuration supports two properties related to Jetty realms - <code>realm</code> and <code>realmConfigFile</code>. When both properties are defined, Gretty applies the specified security realm to a running web-app.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_syntax"><a class="anchor" href="#_syntax"></a>Syntax</h2>
+<div class="sectionbody">
+<div class="listingblock">
+<div class="content">
+<pre class="prettyprint groovy language-groovy"><code>gretty {
+  // ...
+  realm 'auth'
+  realmConfigFile 'jetty-realm.properties'
+  // ...
+}</code></pre>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_effects"><a class="anchor" href="#_effects"></a>Effects</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p><code>realm</code> property defines security realm for the given web-app.
+When specified, it must match /web-app/login-config/realm-name element
+in "web.xml".</p>
+</div>
+<div class="paragraph">
+<p><code>realmConfigFile</code> property defines relative (to webAppDir/WEB-INF folder)
+path to the properties file, containing properties for HashLoginService.<br></p>
+</div>
+<div class="paragraph">
+<p><code>realm</code> and <code>realmConfigFile</code> affect only jettyRun[War][Debug],
+jettyStart[War][Debug] tasks. If you assemble WAR file and deploy it to
+some servlet container, you must define security realms by means of that
+container.</p>
+</div>
+<div class="paragraph">
+<p>Gretty contains example programs, demonstrating use of Jetty realms:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="https://github.com/akhikhl/gretty/tree/master/examples/securityRealm7">securityRealm7</a></p>
+</li>
+<li>
+<p><a href="https://github.com/akhikhl/gretty/tree/master/examples/securityRealm8">securityRealm8</a></p>
+</li>
+<li>
+<p><a href="https://github.com/akhikhl/gretty/tree/master/examples/securityRealm9">securityRealm9</a></p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>See also: <a href="http://wiki.eclipse.org/Jetty/Tutorial/Realms">http://wiki.eclipse.org/Jetty/Tutorial/Realms</a>.</p>
+</div>
+</div>
+</div></p>
+
+	<hr />
+
 		</div>
 		<div id="push"></div>
     </div>

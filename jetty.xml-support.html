@@ -2,7 +2,7 @@
 <html lang="en">
   <head>
     <meta charset="utf-8"/>
-    <title>JBake</title>
+    <title>jetty.xml support</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="">
     <meta name="author" content="">
@@ -59,12 +59,86 @@
     <div class="container">
 	
 	<div class="page-header">
-		<h1>Blog Archive</h1>
+		<h1>jetty.xml support</h1>
 	</div>
-	
-	<!--<ul>-->
-	</ul>
-	
+
+	<p><div id="preamble">
+<div class="sectionbody">
+<div class="paragraph">
+<p>"jetty.xml" is the configuration file for Jetty (for server itself, not for web-app).</p>
+</div>
+<div class="paragraph">
+<p>The purpose and syntax of "jetty.xml" is documented in
+<a href="http://wiki.eclipse.org/Jetty/Reference/jetty.xml">Jetty reference</a>.</p>
+</div>
+<div class="paragraph">
+<p>Gretty recognizes and supports "jetty.xml". As soon as Gretty finds
+existing "jetty.xml" file, it reads the file and uses it to configure
+jetty server. Even if "jetty.xml" is not found, Gretty still works.</p>
+</div>
+<div class="paragraph">
+<p>By convension Gretty looks for the file name "jetty.xml". You can (but you don&#8217;t have to) change the file name by specifying property <code>jettyXmlFile</code> in Gretty configuration:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="prettyprint groovy language-groovy"><code>gretty {
+  // ...
+  jettyXmlFile = 'someFile.xml'
+  // ...
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>If explicitly defined jettyXmlFile represents an absolute path, gretty will try to use just that.</p>
+</div>
+<div class="paragraph">
+<p>If implicitly or explicitly defined jettyXmlFile represents a relative
+path, gretty tries to find corresponding existing file in the following
+directories:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>"$project.projectDir"</code></p>
+</li>
+<li>
+<p><code>"$project.webAppDir/WEB-INF"</code></p>
+</li>
+<li>
+<p><code>"$project.buildDir/classes"</code></p>
+</li>
+<li>
+<p><code>"$project.buildDir/resources"</code></p>
+</li>
+<li>
+<p>recursively in all abovementioned folders of the overlay sources (if any)</p>
+</li>
+<li>
+<p><code>"$JETTY_HOME/etc"</code></p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Gretty sources contain example programs demonstrating support of "jetty.xml" at work:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="https://github.com/akhikhl/gretty/tree/master/examples/testJettyXml7">testJettyXml7</a></p>
+</li>
+<li>
+<p><a href="https://github.com/akhikhl/gretty/tree/master/examples/testJettyXml8">testJettyXml8</a></p>
+</li>
+<li>
+<p><a href="https://github.com/akhikhl/gretty/tree/master/examples/testJettyXml9">testJettyXml9</a></p>
+</li>
+</ul>
+</div>
+</div>
+</div></p>
+
+	<hr />
+
 		</div>
 		<div id="push"></div>
     </div>

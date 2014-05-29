@@ -2,7 +2,7 @@
 <html lang="en">
   <head>
     <meta charset="utf-8"/>
-    <title>JBake</title>
+    <title>GrettyServiceTask</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="">
     <meta name="author" content="">
@@ -59,12 +59,49 @@
     <div class="container">
 	
 	<div class="page-header">
-		<h1>Blog Archive</h1>
+		<h1>GrettyServiceTask</h1>
 	</div>
-	
-	<!--<ul>-->
-	</ul>
-	
+
+	<p><div id="preamble">
+<div class="sectionbody">
+<div class="paragraph">
+<p>This is task class you can instantiate and configure in your gradle
+scripts. Many standard Gretty tasks are actually instances of this
+class.</p>
+</div>
+<div class="paragraph">
+<p><strong>Attention:</strong> this is "low-level" class. You will have to program
+properties and dependencies on other tasks yourself. If this is too much
+and you want that "things just work", consider using
+<a href="jettyStop-task.html">jettyStop task</a> or other <a href="Gretty-tasks">gretty
+tasks</a>.</p>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_syntax"><a class="anchor" href="#_syntax"></a>Syntax</h4>
+<div class="paragraph">
+<p>code,groovy---------------------------------------------- code,groovy
+import org.akhikhl.gretty.GrettyServiceTask
+task(<em>myJettyStop</em>, type: GrettyServiceTask) {
+  command = <em>stop</em>
+  servicePort = 9900
+}</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>
+* `command` - string, required. Defines a string to send to
+`servicePort` when task is executed.
+* `servicePort` - integer, optional, default is
+link:Gretty-configuration.html#_serviceport[project.gretty.servicePort].
+Defines TCP-port to which a command is sent.</pre>
+</div>
+</div>
+</div></p>
+
+	<hr />
+
 		</div>
 		<div id="push"></div>
     </div>

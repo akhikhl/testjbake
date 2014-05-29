@@ -2,7 +2,7 @@
 <html lang="en">
   <head>
     <meta charset="utf-8"/>
-    <title>JBake</title>
+    <title>JEE annotations support</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="">
     <meta name="author" content="">
@@ -59,12 +59,72 @@
     <div class="container">
 	
 	<div class="page-header">
-		<h1>Blog Archive</h1>
+		<h1>JEE annotations support</h1>
 	</div>
-	
-	<!--<ul>-->
-	</ul>
-	
+
+	<p><div id="preamble">
+<div class="sectionbody">
+<div class="paragraph">
+<p>Gretty supports JEE annotations out-of-the-box. This means: you don&#8217;t
+have to configure anything, you just use JEE annotations in the
+web-app:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="prettyprint java language-java"><code>import java.io.IOException;
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+@WebServlet( name="AnnotatedServlet", displayName="Annotated Servlet", urlPatterns = {"/annotations/*"}, loadOnStartup=1)
+public class ExampleServlet extends HttpServlet {
+
+  private static final long serialVersionUID = -6506276378398106663L;
+
+  @Override
+  protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    // doGet implementation
+  }
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Note that jetty-7 flavor of Gretty does not support JEE annotations, since it is using servlet-api 2.5.</p>
+</div>
+<div class="paragraph">
+<p>jetty-8 and jetty-9 flavors of Gretty support JEE annotations in the current web-app and in it&#8217;s overlays (if any).</p>
+</div>
+<div class="paragraph">
+<p>Normally Gretty looks for JEE-annotated classes in "build/classes"
+directories belonging to the web-app classpath. You can change this
+behavior by inserting the following into "jetty-env.xml":</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="prettyprint xml language-xml"><code>&lt;?xml version="1.0"?&gt;
+&lt;!DOCTYPE Configure PUBLIC "-//Jetty//Configure//EN" "http://www.eclipse.org/jetty/configure.dtd"&gt;
+&lt;Configure class="org.eclipse.jetty.webapp.WebAppContext"&gt;
+  &lt;Call name="setContextAttribute"&gt;
+    &lt;Arg&gt;org.eclipse.jetty.server.webapp.ContainerIncludeJarPattern&lt;/Arg&gt;
+    &lt;Arg&gt;.*/foo-[^/]*\.jar$|.*/bar-[^/]*\.jar$|.*/classes/.*&lt;/Arg&gt;
+  &lt;/Call&gt;
+&lt;/Configure&gt;</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>in the example above we specify, that Gretty should scan for annotations
+any jar whose name starts with "foo-" or "bar-", or a directory named "classes".</p>
+</div>
+<div class="paragraph">
+<p>See also: <a href="jetty-env.xml-support.html">"jetty-env.xml" support</a>.</p>
+</div>
+</div>
+</div></p>
+
+	<hr />
+
 		</div>
 		<div id="push"></div>
     </div>

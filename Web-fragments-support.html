@@ -2,7 +2,7 @@
 <html lang="en">
   <head>
     <meta charset="utf-8"/>
-    <title>JBake</title>
+    <title>Web-fragments support</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="">
     <meta name="author" content="">
@@ -59,12 +59,50 @@
     <div class="container">
 	
 	<div class="page-header">
-		<h1>Blog Archive</h1>
+		<h1>Web-fragments support</h1>
 	</div>
-	
-	<!--<ul>-->
-	</ul>
-	
+
+	<p><div id="preamble">
+<div class="sectionbody">
+<div class="paragraph">
+<p>Gretty supports META-INF/web-fragment.xml and META-INF/resources in dependency libraries - both for inplace and WAR tasks.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<div class="title">Note</div>
+</td>
+<td class="content">
+web fragments feature was introduced in servlet 3.0 specification, therefore it is not available with jetty 7 (and with gretty7).
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>Gretty sources contain example programs, demonstrating use of web-fragments:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="https://github.com/akhikhl/gretty/tree/master/examples/webfragment8">webfragment8</a></p>
+</li>
+<li>
+<p><a href="https://github.com/akhikhl/gretty/tree/master/examples/webhost8">webhost8</a></p>
+</li>
+<li>
+<p><a href="https://github.com/akhikhl/gretty/tree/master/examples/webfragment9">webfragment9</a></p>
+</li>
+<li>
+<p><a href="https://github.com/akhikhl/gretty/tree/master/examples/webhost9">webhost9</a></p>
+</li>
+</ul>
+</div>
+</div>
+</div></p>
+
+	<hr />
+
 		</div>
 		<div id="push"></div>
     </div>

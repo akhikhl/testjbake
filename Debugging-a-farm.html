@@ -2,7 +2,7 @@
 <html lang="en">
   <head>
     <meta charset="utf-8"/>
-    <title>JBake</title>
+    <title>Debugging a farm</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="">
     <meta name="author" content="">
@@ -59,12 +59,49 @@
     <div class="container">
 	
 	<div class="page-header">
-		<h1>Blog Archive</h1>
+		<h1>Debugging a farm</h1>
 	</div>
-	
-	<!--<ul>-->
-	</ul>
-	
+
+	<p><div id="preamble">
+<div class="sectionbody">
+<div class="paragraph">
+<p>Gretty supports debugging a farm with a set of special gradle tasks: farmRunDebug, farmRunWarDebug, farmStartDebug, farmStartWarDebug.</p>
+</div>
+<div class="paragraph">
+<p>When you invoke one of the debugging tasks, a farm starts jetty server with all farm web-apps, in suspended mode, and waits for debugger commands on port 5005.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<div class="title">Note</div>
+</td>
+<td class="content">
+Author of Gretty plugin tested farm debugging under Netbeans IDE. In principle, it should work under other Java IDEs as well, but it&#8217;s not tested yet.
+</td>
+</tr>
+</table>
+</div>
+<div class="admonitionblock important">
+<table>
+<tr>
+<td class="icon">
+<div class="title">Important</div>
+</td>
+<td class="content">
+The project, containing a farm, must be a JVM project (Java, Groovy, etc.), otherwise IDE does not send debugging commands to the debugged JVM process over port 5005. This requirement is easily fulfilled, when you apply gretty-farm plugin to one of the web-apps, as <a href="Combining-web-app-and-farm.html">described before</a>.
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>See also: <a href="index.html#_multiple_web_apps">Multiple web-apps</a>.</p>
+</div>
+</div>
+</div></p>
+
+	<hr />
+
 		</div>
 		<div id="push"></div>
     </div>

@@ -2,7 +2,7 @@
 <html lang="en">
   <head>
     <meta charset="utf-8"/>
-    <title>JBake</title>
+    <title>Configuring default farm</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="">
     <meta name="author" content="">
@@ -59,12 +59,46 @@
     <div class="container">
 	
 	<div class="page-header">
-		<h1>Blog Archive</h1>
+		<h1>Configuring default farm</h1>
 	</div>
-	
-	<!--<ul>-->
-	</ul>
-	
+
+	<p><div id="preamble">
+<div class="sectionbody">
+<div class="paragraph">
+<p>In real life you are likely to face two problems:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>web-apps are not subprojects of farm project</p>
+</li>
+<li>
+<p>you do not want all web-apps to be started, only subset of them</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>For such cases you&#8217;ll need to define farm configuration. Edit the file "ProjectA/build.gradle", insert code:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="prettyprint groovy language-groovy"><code>farm {
+  webapp ':ProjectA'
+  webapp ':ProjectB'
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Here we define that default farm includes two projects - ProjectA and ProjectB. As soon as we start farm tasks, both projects will run on the same jetty server with distinct context paths.</p>
+</div>
+<div class="paragraph">
+<p>See also: <a href="index.html#_multiple_web_apps">Multiple web-apps</a>.</p>
+</div>
+</div>
+</div></p>
+
+	<hr />
+
 		</div>
 		<div id="push"></div>
     </div>

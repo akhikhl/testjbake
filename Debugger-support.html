@@ -2,7 +2,7 @@
 <html lang="en">
   <head>
     <meta charset="utf-8"/>
-    <title>JBake</title>
+    <title>Debugger support</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="">
     <meta name="author" content="">
@@ -59,12 +59,31 @@
     <div class="container">
 	
 	<div class="page-header">
-		<h1>Blog Archive</h1>
+		<h1>Debugger support</h1>
 	</div>
-	
-	<!--<ul>-->
-	</ul>
-	
+
+	<p><div id="preamble">
+<div class="sectionbody">
+<div class="paragraph">
+<p>All jettyRunXXX and jettyStartXXX tasks have their debugging
+counterparts. For example, there are tasks jettyRun and jettyRunDebug.
+jettyRun starts web-app "normally", while jettyRunDebug starts
+web-app in suspended mode and listens for debugger commands on
+port 5005.</p>
+</div>
+<div class="paragraph">
+<p>Author of Gretty plugin tested debugging only under Netbeans IDE. It
+should also work under other IDEs, but it&#8217;s not tested yet.</p>
+</div>
+<div class="paragraph">
+<p>Author of Gretty plugin invites all interested parties to testing Gretty
+debugging features under other IDEs.</p>
+</div>
+</div>
+</div></p>
+
+	<hr />
+
 		</div>
 		<div id="push"></div>
     </div>

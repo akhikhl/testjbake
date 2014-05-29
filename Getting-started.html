@@ -2,7 +2,7 @@
 <html lang="en">
   <head>
     <meta charset="utf-8"/>
-    <title>JBake</title>
+    <title>Getting started</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="">
     <meta name="author" content="">
@@ -59,12 +59,97 @@
     <div class="container">
 	
 	<div class="page-header">
-		<h1>Blog Archive</h1>
+		<h1>Getting started</h1>
 	</div>
-	
-	<!--<ul>-->
-	</ul>
-	
+
+	<p><div id="preamble">
+<div class="sectionbody">
+<div class="paragraph">
+<p>Add the following to "build.gradle" of your web-app:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="prettyprint groovy language-groovy"><code>apply from: 'https://raw.github.com/akhikhl/gretty/master/pluginScripts/gretty.plugin'</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>That&#8217;s all! Now you can start your web-app with the command:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="prettyprint bash language-bash"><code>gradle jettyRun</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>you can also use other <a href="Gretty-tasks">tasks for running and
+debugging</a> your web-app or <a href="Gretty-configuration.html">configure Gretty</a>
+to your needs.</p>
+</div>
+<div class="paragraph">
+<p>Alternatively, you can download the script from
+<a href="https://raw.github.com/akhikhl/gretty/master/pluginScripts/gretty.plugin">https://raw.github.com/akhikhl/gretty/master/pluginScripts/gretty.plugin</a>
+to the project folder and include it like this:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="prettyprint groovy language-groovy"><code>apply from: 'gretty.plugin'</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>or feel free inserting to your "build.gradle":</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="prettyprint groovy language-groovy"><code>buildscript {
+  repositories {
+    jcenter()
+  }
+
+  dependencies {
+    classpath 'org.akhikhl.gretty:gretty-plugin:+'
+  }
+}
+
+repositories {
+  jcenter()
+}
+
+apply plugin: 'gretty'</code></pre>
+</div>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<div class="title">Note</div>
+</td>
+<td class="content">
+All versions of gretty are available at jcenter and maven central under
+the group <em>org.akhikhl.gretty</em>.
+</td>
+</tr>
+</table>
+</div>
+<div class="admonitionblock important">
+<table>
+<tr>
+<td class="icon">
+<div class="title">Important</div>
+</td>
+<td class="content">
+If you experience problems starting Gretty, first look into
+<a href="Troubleshooting.html">troubleshooting</a> section. If it does not help,
+raise an issue at <a href="https://github.com/akhikhl/gretty/issues">Gretty issue tracker</a>
+or <a href="mailto:akhikhl@gmail.com">send an email</a> to Gretty developer.
+</td>
+</tr>
+</table>
+</div>
+</div>
+</div></p>
+
+	<hr />
+
 		</div>
 		<div id="push"></div>
     </div>

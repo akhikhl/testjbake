@@ -2,7 +2,7 @@
 <html lang="en">
   <head>
     <meta charset="utf-8"/>
-    <title>JBake</title>
+    <title>Duplicate farm names</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="">
     <meta name="author" content="">
@@ -59,12 +59,102 @@
     <div class="container">
 	
 	<div class="page-header">
-		<h1>Blog Archive</h1>
+		<h1>Duplicate farm names</h1>
 	</div>
-	
-	<!--<ul>-->
-	</ul>
-	
+
+	<p><div id="preamble">
+<div class="sectionbody">
+<div class="paragraph">
+<p>If you configure farm with the same name more than once, there&#8217;s still only one farm with the given name and it&#8217;s properties are merged:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>each property except web-app list is overridden by later definition</p>
+</li>
+<li>
+<p>web-app lists are merged as hashmaps:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>merged web-app list does not contain duplicates</p>
+</li>
+<li>
+<p>override properties of web-apps with the same name are also merged as hashmaps</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Example:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="prettyprint groovy language-groovy"><code>farms {
+  farm 'A', {
+    port = 8081
+    webapp ':ProjectA'
+    webapp ':ProjectB', contextPath: '/aaa', inplace: false
+  }
+  farm 'A', {
+    port = 8082
+    webapp ':ProjectB', contextPath: '/bbb'
+    webapp ':ProjectC'
+  }
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>As the result, farm "A" gets <code>port=8082</code> and refers three web-apps:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>webapp ':ProjectA'</code></p>
+</li>
+<li>
+<p><code>webapp ':ProjectB', contextPath: '/bbb', inplace: false</code></p>
+</li>
+<li>
+<p><code>webapp ':ProjectC'</code></p>
+</li>
+</ul>
+</div>
+<div class="admonitionblock tip">
+<table>
+<tr>
+<td class="icon">
+<div class="title">Tip</div>
+</td>
+<td class="content">
+Farms are strictly project-specific. If you define farms with the same name in two different projects, they are totally unrelated and are never merged.
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>See also:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="Farm-server-specific-properties.html">Farm server-specific properties</a></p>
+</li>
+<li>
+<p><a href="Farm-web-app-list.html">Farm web-app list</a></p>
+</li>
+<li>
+<p><a href="Farms-and-web-app-specific-properties.html">Farms and web-app specific properties</a></p>
+</li>
+</ul>
+</div>
+</div>
+</div></p>
+
+	<hr />
+
 		</div>
 		<div id="push"></div>
     </div>

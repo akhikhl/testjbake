@@ -2,7 +2,7 @@
 <html lang="en">
   <head>
     <meta charset="utf-8"/>
-    <title>JBake</title>
+    <title>jettyStop task</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="">
     <meta name="author" content="">
@@ -59,12 +59,69 @@
     <div class="container">
 	
 	<div class="page-header">
-		<h1>Blog Archive</h1>
+		<h1>jettyStop task</h1>
 	</div>
-	
-	<!--<ul>-->
-	</ul>
-	
+
+	<p><div id="preamble">
+<div class="sectionbody">
+<div class="paragraph">
+<p>jettyStop sends "stop" command to a running jetty server.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_syntax"><a class="anchor" href="#_syntax"></a>Syntax</h2>
+<div class="sectionbody">
+<div class="listingblock">
+<div class="content">
+<pre class="prettyprint bash language-bash"><code>gradle jettyStop</code></pre>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_effects"><a class="anchor" href="#_effects"></a>Effects</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>jettyStop does not build source code, it only sends "stop" command to
+localhost:<a href="Gretty-configuration.html#_serviceport">servicePort</a>. Usually
+jettyStop is used to stop Gretty/Jetty process started by jettyStart[War][Debug].</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_instantiation_and_extension"><a class="anchor" href="#_instantiation_and_extension"></a>Instantiation and extension</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The object called jettyStop is actually an instance of <a href="Gretty-task-classes.html#_jettystoptask">JettyStopTask</a> class, created and configured for you by Gretty. You can instantiate or even extend this class on your own:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="prettyprint groovy language-groovy"><code>apply plugin: 'gretty'
+
+import org.akhikhl.gretty.JettyStopTask
+
+task('MyStop', type: JettyStopTask) {
+  // ...
+}
+
+class VerySpecialStop extends JettyStopTask {
+  // ...
+}
+
+task('MyStop2', type: VerySpecialStop) {
+  // ...
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>If you are going to instantiate or extend this task class yourself, make sure you&#8217;ve learned it&#8217;s properties and methods.</p>
+</div>
+</div>
+</div></p>
+
+	<hr />
+
 		</div>
 		<div id="push"></div>
     </div>

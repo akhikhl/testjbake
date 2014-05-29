@@ -2,7 +2,7 @@
 <html lang="en">
   <head>
     <meta charset="utf-8"/>
-    <title>JBake</title>
+    <title>farmStop task</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="">
     <meta name="author" content="">
@@ -59,12 +59,51 @@
     <div class="container">
 	
 	<div class="page-header">
-		<h1>Blog Archive</h1>
+		<h1>farmStop task</h1>
 	</div>
-	
-	<!--<ul>-->
-	</ul>
-	
+
+	<p><div id="preamble">
+<div class="sectionbody">
+<div class="paragraph">
+<p>farmStop sends "stop" command to a running jetty server.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_syntax"><a class="anchor" href="#_syntax"></a>Syntax</h2>
+<div class="sectionbody">
+<div class="listingblock">
+<div class="content">
+<pre class="prettyprint bash language-bash"><code>gradle farmStop</code></pre>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_effects"><a class="anchor" href="#_effects"></a>Effects</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>farmStop does not build source code, it only sends "stop" command to
+localhost:<a href="Farm-configuration.html#_serviceport">servicePort</a>. Usually
+farmStop is used to stop Gretty/Jetty process started by farmStart[War][Debug].</p>
+</div>
+<div class="admonitionblock warning">
+<table>
+<tr>
+<td class="icon">
+<div class="title">Warning</div>
+</td>
+<td class="content">
+do not try to stop Jetty server with farmStop, if it was started with jettyStart[War][Debug] or with farmStart[War][Debug] from another farm. Reason is simple: each farm may redefine it&#8217;s TCP-ports in farm configuration, so farmStop may be sending a command on incorrect port, when paired with wrong start task.
+</td>
+</tr>
+</table>
+</div>
+</div>
+</div></p>
+
+	<hr />
+
 		</div>
 		<div id="push"></div>
     </div>

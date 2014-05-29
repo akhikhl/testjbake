@@ -2,7 +2,7 @@
 <html lang="en">
   <head>
     <meta charset="utf-8"/>
-    <title>JBake</title>
+    <title>farms extension</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="">
     <meta name="author" content="">
@@ -59,12 +59,63 @@
     <div class="container">
 	
 	<div class="page-header">
-		<h1>Blog Archive</h1>
+		<h1>farms extension</h1>
 	</div>
-	
-	<!--<ul>-->
-	</ul>
-	
+
+	<p><div id="preamble">
+<div class="sectionbody">
+<div class="paragraph">
+<p>When you apply gretty-farm plugin, it adds <strong>farms</strong> extension to the current project.</p>
+</div>
+<div class="paragraph">
+<p>You can (but you don&#8217;t have to) configure farms extension object in your gradle script:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="prettyprint groovy language-groovy"><code>farms {
+  farm 'XYZ', {
+    // ... properties
+  }
+  farm 'ABC', {
+    // ... properties
+  }
+  // ...
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Farms extension object holds map of farm names to farm definitions.</p>
+</div>
+<div class="paragraph">
+<p>Default farm is already included into farm map with empty name.</p>
+</div>
+<div class="paragraph">
+<p>Each named farm defines it&#8217;s own set of farm tasks: farmRunXYZ, farmRunDebugXYZ, etc., where "XYZ" is a farm name.</p>
+</div>
+<div class="paragraph">
+<p>All farm tasks, when invoked on given project, use properties of their farm definition.</p>
+</div>
+<div class="paragraph">
+<p>Each farm consists of two parts:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="Farm-server-specific-properties.html">Farm server-specific properties</a></p>
+</li>
+<li>
+<p><a href="Farm-web-app-list.html">Farm web-app list</a></p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>See also: <a href="index.html#_multiple_web_apps">Multiple web-apps</a>.</p>
+</div>
+</div>
+</div></p>
+
+	<hr />
+
 		</div>
 		<div id="push"></div>
     </div>

@@ -2,7 +2,7 @@
 <html lang="en">
   <head>
     <meta charset="utf-8"/>
-    <title>JBake</title>
+    <title>farmStartWar task</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="">
     <meta name="author" content="">
@@ -59,12 +59,68 @@
     <div class="container">
 	
 	<div class="page-header">
-		<h1>Blog Archive</h1>
+		<h1>farmStartWar task</h1>
 	</div>
-	
-	<!--<ul>-->
-	</ul>
-	
+
+	<p><div id="preamble">
+<div class="sectionbody">
+<div class="paragraph">
+<p>farmStartWar starts farm web-apps as WAR-files.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_syntax"><a class="anchor" href="#_syntax"></a>Syntax</h2>
+<div class="sectionbody">
+<div class="listingblock">
+<div class="content">
+<pre class="prettyprint bash language-bash"><code>gradle farmStartWar</code></pre>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_effects"><a class="anchor" href="#_effects"></a>Effects</h2>
+<div class="sectionbody">
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>By default each farm web-app is compiled and assembled into WAR-file (if it&#8217;s not up-to-date).</p>
+</li>
+<li>
+<p>If farm configuration <a href="Multiple-web-apps-tutorial.html#_mixing_inplace_and_war_mode">overrides inplace property</a> for some web-apps to <code>true</code>, then each of these web-apps gets compiled without creating WAR-file (if it’s not up-to-date).</p>
+</li>
+<li>
+<p>Embedded jetty starts in separate java process against WAR-files (and, optionally, against compiled classes and their dependencies) and listens for HTTP-requests on <a href="Farm-configuration.html#_port">port</a> (default 8080).</p>
+</li>
+<li>
+<p>Gretty waits for jetty process to complete.</p>
+</li>
+<li>
+<p>Gradle script continues normal execution of tasks.</p>
+</li>
+</ol>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<div class="title">Note</div>
+</td>
+<td class="content">
+this task does not stop Jetty. It is assumed that another gradle process stops it, supposedly <code>gradle farmStop</code>.
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>See also: <a href="farmStop-task.html">farmStop task</a> and <a href="farmRestart-task.html">farmRestart task</a>.</p>
+</div>
+</div>
+</div></p>
+
+	<hr />
+
 		</div>
 		<div id="push"></div>
     </div>

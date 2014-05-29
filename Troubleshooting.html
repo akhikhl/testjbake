@@ -2,7 +2,7 @@
 <html lang="en">
   <head>
     <meta charset="utf-8"/>
-    <title>JBake</title>
+    <title>Troubleshooting</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="">
     <meta name="author" content="">
@@ -59,12 +59,69 @@
     <div class="container">
 	
 	<div class="page-header">
-		<h1>Blog Archive</h1>
+		<h1>Troubleshooting</h1>
 	</div>
-	
-	<!--<ul>-->
-	</ul>
-	
+
+	<p><div class="sect1">
+<h2 id="_groovycastexception_while_starting_web_app_with_gretty"><a class="anchor" href="#_groovycastexception_while_starting_web_app_with_gretty"></a>GroovyCastException while starting web-app with Gretty</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Don&#8217;t try to apply from "grettyX-X.plugin" AND define classpath for
+gretty simultaneously:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="prettyprint groovy language-groovy"><code>// ATTENTION: this script does not work! It contains error!
+buildscript {
+  repositories {
+    jcenter()
+  }
+
+  dependencies {
+    classpath 'org.akhikhl.gretty:gretty-plugin:+'
+  }
+}
+
+repositories {
+  jcenter()
+}
+
+apply from: 'https://raw.github.com/akhikhl/gretty/master/pluginScripts/gretty.plugin'</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Here the following happens: gradle loads gretty-plugin JARs twice, class-loading gets confused and you get exceptions like GroovyCastException.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_exceptions_when_using_jacoco_code_coverage_on_jdk_8"><a class="anchor" href="#_exceptions_when_using_jacoco_code_coverage_on_jdk_8"></a>Exceptions when using Jacoco code coverage on JDK-8</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>If you get exceptions when using combination JDK-8 + Gradle 1.1x + Jacoco + Gretty, you are very likely hitting a problem of compatibility between JDK-8 and earlier versions of Jacoco. This is fixed by adding the following to your "build.gradle":</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="prettyprint groovy language-groovy"><code>jacoco {
+  toolVersion = '0.7.1.201405082137'
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>or, if you don&#8217;t want to depend on concrete version of Jacoco and prefer to use the latest available version:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="prettyprint groovy language-groovy"><code>jacoco {
+  toolVersion = '+'
+}</code></pre>
+</div>
+</div>
+</div>
+</div></p>
+
+	<hr />
+
 		</div>
 		<div id="push"></div>
     </div>
